@@ -21,9 +21,9 @@ The generated SVG card will be displayed along with BBCode, HTML, and Markdown q
 
 ## Examples
 
-![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23ffffff&title_color=%230366d6&text_color=%23333333&icon_color=%23333333)
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23ffffff&title_color=%230366d6&text_color=%23333333&icon_color=%233g3333)
 
-![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23333333&title_color=%2337ff00&text_color=%2300eeff&icon_color=%23ff00bb)
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23333333&title_color=%2337ff00&text_color=%2300ddff&icon_color=%23ff00bb)
 
 ## Demo
 
