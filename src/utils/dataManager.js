@@ -9,15 +9,11 @@ const CACHE_MINUTES = process.env.CACHE_LENGTH || 60; // Cache time in minutes
 const CACHE_TIME = CACHE_MINUTES * 60 * 1000; // Cache time in milliseconds
 
 export async function hasCachedData(user, repo) {
-    console.log(CACHE_MINUTES);
     const cachedData = await getCachedData(user, repo);
     if (!cachedData) {
-        console.log(`No cached data for ${user}/${repo}`);
         return false;
     }
-    const hasCache = Date.now() - cachedData.timestamp < CACHE_TIME;
-    console.log(`Cached data for ${user}/${repo} is ${hasCache ? 'valid' : 'invalid'}`)
-    return hasCache;
+    return Date.now() - cachedData.timestamp < CACHE_TIME;
 }
 
 export async function getCachedData(user, repo) {
