@@ -26,15 +26,10 @@ export function generateErrorSVG(errorMessage) {
 
 export function generateSVG(data, backgroundColor, titleColor, textColor, iconColor) {
 
-    console.log("Colors: ", backgroundColor, titleColor, textColor, iconColor);
-
-    const finalBackgroundColor = "#" + backgroundColor;
-    const finalTitleColor = "#" + titleColor;
-    const finalTextColor = "#" + textColor;
-    const finalIconColor = "#" + iconColor;
-
-    console.log("Final Colors: ", finalBackgroundColor, finalTitleColor, finalTextColor, finalIconColor);
-
+    const finalBackgroundColor = backgroundColor.charAt(0) !== '#' ? '#' + backgroundColor : backgroundColor;
+    const finalTitleColor = titleColor.charAt(0) !== '#' ? '#' + titleColor : titleColor;
+    const finalTextColor = textColor.charAt(0) !== '#' ? '#' + textColor : textColor;
+    const finalIconColor = iconColor.charAt(0) !== '#' ? '#' + iconColor : iconColor;
 
     const descriptionLines = splitText(data.description || '', maxRowLength);
     const repoIcon = generateRepoIcon(finalIconColor);

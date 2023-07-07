@@ -64,8 +64,6 @@ app.get('/repo/:user/:repo', checkCache, async (req, res) => {
     const textColor =  req.query.text_color || '#333';
     const iconColor =  req.query.icon_color || '#333';
 
-    console.log("Request color: ", backgroundColor, titleColor, textColor, iconColor);
-
     let data;
     try {
         const hasCache = await hasCachedData(user, repo);
