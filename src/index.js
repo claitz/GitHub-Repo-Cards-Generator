@@ -2,7 +2,7 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import { generateErrorSVG, generateSVG, isValidColor } from './utils/svgGenerator.js';
+import { generateErrorSVG, generateSVG } from './utils/svgGenerator.js';
 import { hasCachedData, getCachedData, updateCache, getRepoData } from './utils/dataManager.js';
 
 const PORT = process.env.PORT || 3000;
@@ -59,10 +59,12 @@ app.get('/js/config.js', (req, res) => {
 
 app.get('/repo/:user/:repo', checkCache, async (req, res) => {
     const { user, repo } = req.params;
-    const backgroundColor = isValidColor(req.query.bg_color) ? req.query.bg_color : '#fff';
-    const titleColor = isValidColor(req.query.title_color) ? req.query.title_color : '#0366d6';
-    const textColor = isValidColor(req.query.text_color) ? req.query.text_color : '#333';
-    const iconColor = isValidColor(req.query.icon_color) ? req.query.icon_color : '#333';
+    const backgroundColor = req.query.bg_color || '#fff';
+    const titleColor = req.query.title_color || '#0366d6';
+    const textColor =  req.query.text_color || '#333';
+    const iconColor =  req.query.icon_color || '#333';
+
+    console.log("Request color: ", backgroundColor, titleColor, textColor, iconColor);
 
     let data;
     try {

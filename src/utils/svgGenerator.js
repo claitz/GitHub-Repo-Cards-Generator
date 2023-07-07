@@ -25,17 +25,28 @@ export function generateErrorSVG(errorMessage) {
 }
 
 export function generateSVG(data, backgroundColor, titleColor, textColor, iconColor) {
+
+    console.log("Colors: ", backgroundColor, titleColor, textColor, iconColor);
+
+    const finalBackgroundColor = "#" + backgroundColor;
+    const finalTitleColor = "#" + titleColor;
+    const finalTextColor = "#" + textColor;
+    const finalIconColor = "#" + iconColor;
+
+    console.log("Final Colors: ", finalBackgroundColor, finalTitleColor, finalTextColor, finalIconColor);
+
+
     const descriptionLines = splitText(data.description || '', maxRowLength);
-    const repoIcon = generateRepoIcon(iconColor);
-    const header = generateHeader(data.name, data.html_url, titleColor);
-    const starSection = generateStarSection(data.stargazers_count, data.html_url, textColor, iconColor);
-    const descriptionSection = generateDescriptionSection(descriptionLines, textColor);
-    const languageSection = generateLanguageSection(data.language, textColor);
-    const forksSection = generateForksSection(data.forks_count, data.html_url, textColor, iconColor);
+    const repoIcon = generateRepoIcon(finalIconColor);
+    const header = generateHeader(data.name, data.html_url, finalTitleColor);
+    const starSection = generateStarSection(data.stargazers_count, data.html_url, finalTextColor, finalIconColor);
+    const descriptionSection = generateDescriptionSection(descriptionLines, finalTextColor);
+    const languageSection = generateLanguageSection(data.language, finalTextColor);
+    const forksSection = generateForksSection(data.forks_count, data.html_url, finalTextColor, finalIconColor);
 
     return `
         <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-            <rect x="0" y="0" width="100%" height="100%" fill="${backgroundColor}" stroke="#eaecef" stroke-width="2"></rect>
+            <rect x="0" y="0" width="100%" height="100%" fill="${finalBackgroundColor}" stroke="#eaecef" stroke-width="2"></rect>
             ${repoIcon}
             ${header}
             ${starSection}
@@ -135,9 +146,4 @@ function splitText(text, maxLineLength) {
 
     if (currentLine.trim()) lines.push(currentLine.trim());
     return lines;
-}
-
-export function isValidColor(colorString) {
-    // Checks if it is a valid hex color
-    return /^#([0-9A-F]{3}){1,2}$/i.test(colorString);
 }

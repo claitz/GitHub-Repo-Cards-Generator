@@ -5,10 +5,10 @@ document.getElementById('repoForm').addEventListener('submit', async (event) => 
 
     const gituser = document.getElementById('gituser').value;
     const repository = document.getElementById('repository').value;
-    const bgColor = encodeURIComponent(document.getElementById('bg_color').value);
-    const titleColor = encodeURIComponent(document.getElementById('title_color').value);
-    const textColor = encodeURIComponent(document.getElementById('text_color').value);
-    const iconColor = encodeURIComponent(document.getElementById('icon_color').value);
+    const bgColor = document.getElementById('bg_color').value.substring(1);
+    const titleColor = document.getElementById('title_color').value.substring(1);
+    const textColor = document.getElementById('text_color').value.substring(1);
+    const iconColor = document.getElementById('icon_color').value.substring(1);
 
     localStorage.setItem('gituser', gituser);
     localStorage.setItem('repository', repository);
@@ -60,10 +60,10 @@ function updateResetIcons() {
 window.onload = () => {
     document.getElementById('gituser').value = localStorage.getItem('gituser') || '';
     document.getElementById('repository').value = localStorage.getItem('repository') || '';
-    document.getElementById('bg_color').value = localStorage.getItem('bgColor') ? decodeURIComponent(localStorage.getItem('bgColor')) : '#ffffff';
-    document.getElementById('title_color').value = localStorage.getItem('titleColor') ? decodeURIComponent(localStorage.getItem('titleColor')) : '#0366d6';
-    document.getElementById('text_color').value = localStorage.getItem('textColor') ? decodeURIComponent(localStorage.getItem('textColor')) : '#333333';
-    document.getElementById('icon_color').value = localStorage.getItem('iconColor') ? decodeURIComponent(localStorage.getItem('iconColor')) : '#333333';
+    document.getElementById('bg_color').value = localStorage.getItem('bgColor') ? '#' + localStorage.getItem('bgColor') : '#ffffff';
+    document.getElementById('title_color').value = localStorage.getItem('titleColor') ? '#' + localStorage.getItem('titleColor') : '#0366d6';
+    document.getElementById('text_color').value = localStorage.getItem('textColor') ? '#' + localStorage.getItem('textColor') : '#333333';
+    document.getElementById('icon_color').value = localStorage.getItem('iconColor') ? '#' + localStorage.getItem('iconColor') : '#333333';
 
     // Call this function after setting the values to show or hide the reset icons
     updateResetIcons();
