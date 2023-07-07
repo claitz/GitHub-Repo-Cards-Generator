@@ -96,6 +96,37 @@ label {
     grid-column: span 1;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #333;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer-content p, .footer-content a {
+    text-align: center;
+}
+
+.footer-content a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.footer-content a:hover {
+    color: #000;
+}
+
+.footer-content img {
+    height: 20px;
+}
+
 @media screen and (max-width: 600px) {
     .container {
         flex-direction: column;
