@@ -1,8 +1,11 @@
 # GitHub Repo Card Generator
 
-This application generates SVG cards for GitHub repositories.  
-It caches data for a specific period of time to reduce the number of API requests and improve performance.  
-The application also provides a user interface for generating and customizing SVG cards.
+GitHub Repo Card Generator is a feature-rich application designed for effortlessly creating SVG cards that showcase GitHub repositories.
+
+Repository cards can be generated using the user interface and entering the GitHub username and repository name.  
+The card colors can be customized by clicking on the color pickers and selecting a color.
+
+The generated SVG card will be displayed along with BBCode, HTML, and Markdown quick copy codes for embedding the card.
 
 ## Features
 
@@ -11,6 +14,21 @@ The application also provides a user interface for generating and customizing SV
 - Limits API requests rate
 - Provides a user interface for generating and customizing SVG cards
 - Provides quick copy codes (BBCode, HTML, Markdown) for embedding SVG cards
+
+## Screenshots
+
+![GitHub Repo Card Generator Interface](https://imgur.com/bmNbwdB.png)
+
+## Examples
+
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23ffffff&title_color=%230366d6&text_color=%23333333&icon_color=%23333333)
+
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=%23333333&title_color=%2337ff00&text_color=%2300eeff&icon_color=%23ff00bb)
+
+## Demo
+
+A demo of the application is available at [https://ghc.clait.sh](https://ghc.clait.sh).  
+The capacity of the demo server is limited and the caching policy aggressive, I suggest you to run your own instance of the application.
 
 ## Setup
 
