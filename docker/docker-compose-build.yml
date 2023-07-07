@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   github-card-generator:
-    image: claitz/github-repo-card-generator:latest
+    build: ../
     ports:
       - "3000:3000"
     environment:
