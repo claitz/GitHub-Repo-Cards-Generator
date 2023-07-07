@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub Repo Card Generator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>GitHub Repo Card Generator</h1>
+    <div class="container">
+        <div class="input-area">
+            <form id="repoForm" class="form">
+                <input type="text" id="gituser" placeholder="Enter GitHub Username">
+                <input type="text" id="repository" placeholder="Enter Repository Name">
+
+                <label for="bg_color">BG</label>
+                <div class="color-container">
+                    <input type="color" id="bg_color" value="#ffffff">
+                    <span class="reset-icon" data-default="#ffffff" style="display: none;">❌</span>
+                </div>
+                
+                <label for="title_color">Title</label>
+                <div class="color-container">
+                    <input type="color" id="title_color" value="#0366d6">
+                    <span class="reset-icon" data-default="#0366d6" style="display: none;">❌</span>
+                </div>
+                
+                <label for="text_color">Text</label>
+                <div class="color-container">
+                    <input type="color" id="text_color" value="#333333">
+                    <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
+                </div>
+                
+                <label for="icon_color">Icons</label>
+                <div class="color-container">
+                    <input type="color" id="icon_color" value="#333333">
+                    <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
+                </div>                
+
+                <button type="submit" class="submit-button">Generate</button>
+            </form>
+        </div>
+        <div class="output-area">
+            <div id="result" class="result"></div>
+            <div id="shortcodes" class="shortcodes"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

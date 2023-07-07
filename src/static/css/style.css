@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+}
+
+h1 {
+    text-align: center;
+    color: #24292e;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.input-area {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.output-area {
+    flex: 1;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+#gituser, #repository, .submit-button {
+    grid-column: span 4;
+    padding: 10px;
+}
+
+#bg_color, #title_color, #text_color, #icon_color {
+    width: 50px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-button, .copy-button {
+    padding: 10px;
+    background-color: #0366d6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.submit-button:hover, .copy-button:hover {
+    background-color: #024ea4;
+}
+
+.result {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.shortcodes {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.color-container {
+    display: inline-block;
+    position: relative;
+}
+
+.reset-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+label {
+    text-align: right;
+    padding-right: 10px;
+    grid-column: span 1;
+}
+
