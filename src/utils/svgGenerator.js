@@ -11,7 +11,7 @@ const secondRowY = height * 0.45; // y-coordinate of the second row
 const thirdRowY = height * 0.75; // y-coordinate of the third row
 
 // Description
-const maxRowLength = Math.floor(width * 0.22); // maximum number of characters in a row
+const maxRowLength = Math.floor(width * 0.20); // maximum number of characters in a row
 const maxLines = 3; // maximum number of lines in the description
 const fontSize = 10; // font size of the description
 const lineHeight = 15; // line height of the description
