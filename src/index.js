@@ -60,7 +60,6 @@ app.get('/repo/:user/:repo', checkCache, async (req, res) => {
             await updateCache(data.owner.login, data.name, data);
         }
     } catch (error) {
-        console.log(error);
         const svg = generateErrorSVG('Failed to fetch repository data');
         res.setHeader('Content-Type', 'image/svg+xml');
         return res.send(svg);
