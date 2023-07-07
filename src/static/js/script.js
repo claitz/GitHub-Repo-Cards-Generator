@@ -3,15 +3,30 @@ const googleAnalyticsID = window.config.googleAnalyticsID;
 document.getElementById('repoForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const gituser = document.getElementById('gituser').value;
-    const repository = document.getElementById('repository').value;
+    const gitUrl = document.getElementById('giturl').value;
+    let gituser = '';
+    let repository = '';
+
+    // Regular expressions to match both types of URLs
+    const httpsPattern = /https:\/\/github\.com\/(.*?)\/(.*?)(\.git)?$/;
+    const sshPattern = /git@github\.com:(.*?)\/(.*?)(\.git)?$/;
+
+    // Check if URL matches either pattern
+    if (httpsPattern.test(gitUrl)) {
+        [, gituser, repository] = httpsPattern.exec(gitUrl);
+    } else if (sshPattern.test(gitUrl)) {
+        [, gituser, repository] = sshPattern.exec(gitUrl);
+    } else {
+        console.log('Invalid GitHub URL');
+        return;
+    }
+
     const bgColor = document.getElementById('bg_color').value.substring(1);
     const titleColor = document.getElementById('title_color').value.substring(1);
     const textColor = document.getElementById('text_color').value.substring(1);
     const iconColor = document.getElementById('icon_color').value.substring(1);
 
-    localStorage.setItem('gituser', gituser);
-    localStorage.setItem('repository', repository);
+    localStorage.setItem('giturl', gitUrl);
     localStorage.setItem('bgColor', bgColor);
     localStorage.setItem('titleColor', titleColor);
     localStorage.setItem('textColor', textColor);
@@ -58,8 +73,7 @@ function updateResetIcons() {
 }
 
 window.onload = () => {
-    document.getElementById('gituser').value = localStorage.getItem('gituser') || '';
-    document.getElementById('repository').value = localStorage.getItem('repository') || '';
+    document.getElementById('giturl').value = localStorage.getItem('giturl') || '';
     document.getElementById('bg_color').value = localStorage.getItem('bgColor') ? '#' + localStorage.getItem('bgColor') : '#ffffff';
     document.getElementById('title_color').value = localStorage.getItem('titleColor') ? '#' + localStorage.getItem('titleColor') : '#0366d6';
     document.getElementById('text_color').value = localStorage.getItem('textColor') ? '#' + localStorage.getItem('textColor') : '#333333';
