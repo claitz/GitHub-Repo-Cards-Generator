@@ -20,6 +20,6 @@
     "url": "^0.11.1"
   },
   "devDependencies": {
-    "nodemon": "^1.14.9"
+    "nodemon": "^2.0.22"
   }
 }
