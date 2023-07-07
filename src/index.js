@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 3000;
 
 const PUBLIC_URL = process.env.PUBLIC_URL || 'http://localhost:3000';
 
+const GOOGLE_ANALYTICS_ID = process.env.GOOGLE_ANALYTICS_ID || '';
+
 const API_WINDOW = process.env.API_WINDOW || 1; // Window in minutes
 const API_LIMIT = process.env.API_LIMIT || 1; // Max API calls per hour
 
@@ -49,7 +51,8 @@ app.get('/js/config.js', (req, res) => {
     res.set('Content-Type', 'application/javascript');
     res.send(`
         window.config = {
-            PUBLIC_URL: "${PUBLIC_URL}"
+            PUBLIC_URL: "${PUBLIC_URL}",
+            googleAnalyticsID: "${GOOGLE_ANALYTICS_ID}"
         };
     `);
 });

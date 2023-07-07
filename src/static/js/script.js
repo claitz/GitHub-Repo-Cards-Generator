@@ -1,4 +1,5 @@
 const publicUrl = window.config.PUBLIC_URL;
+const googleAnalyticsID = window.config.googleAnalyticsID;
 document.getElementById('repoForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -87,3 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Google Analytics
+if (typeof googleAnalyticsID !== 'undefined' && googleAnalyticsID.trim() !== '') {
+    document.addEventListener('DOMContentLoaded', function() {
+        const scriptUrl = "https://www.googletagmanager.com/gtag/js?id=" + googleAnalyticsID;
+        console.log(scriptUrl);
+
+        document.getElementById('google-analytics').innerHTML = `
+        <!-- Google tag (gtag.js) -->
+        <script async src='${scriptUrl}'></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', '${googleAnalyticsID}');
+        </script>
+        `;
+    });
+}
