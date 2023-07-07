@@ -33,9 +33,9 @@ document.getElementById('repoForm').addEventListener('submit', async (event) => 
 });
 
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
+    navigator.clipboard.writeText(text).then(function () {
         console.log('Copying to clipboard was successful!');
-    }, function(err) {
+    }, function (err) {
         console.error('Could not copy text: ', err);
     });
 }
@@ -60,7 +60,7 @@ window.onload = () => {
     document.getElementById('title_color').value = localStorage.getItem('titleColor') ? decodeURIComponent(localStorage.getItem('titleColor')) : '#0366d6';
     document.getElementById('text_color').value = localStorage.getItem('textColor') ? decodeURIComponent(localStorage.getItem('textColor')) : '#333333';
     document.getElementById('icon_color').value = localStorage.getItem('iconColor') ? decodeURIComponent(localStorage.getItem('iconColor')) : '#333333';
-    
+
     // Call this function after setting the values to show or hide the reset icons
     updateResetIcons();
 };

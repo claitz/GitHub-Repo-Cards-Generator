@@ -1,4 +1,4 @@
-import { languageColors } from './languageColors.js';
+import {languageColors} from './languageColors.js';
 
 // Config
 // Dimensions
@@ -47,9 +47,9 @@ export function generateSVG(data, backgroundColor, titleColor, textColor, iconCo
 
 function generateRepoIcon(iconColor) {
     // Size and position relative to the canvas
-    const iconSize = width * 0.0035; 
-    const iconPositionX = width * 0.05; 
-    const iconPositionY = height * 0.1; 
+    const iconSize = width * 0.0035;
+    const iconPositionX = width * 0.05;
+    const iconPositionY = height * 0.1;
 
     return `
 <g fill="${iconColor}" transform="translate(${iconPositionX}, ${iconPositionY}) scale(${iconSize})">
@@ -59,7 +59,7 @@ function generateRepoIcon(iconColor) {
 
 function generateHeader(repoName, repoUrl, titleColor) {
     // Position relative to the canvas
-    const positionX = width * 0.12; 
+    const positionX = width * 0.12;
 
     return `
 <g fill="#0366d6" transform="translate(${positionX}, ${firstRowY})">
@@ -83,7 +83,7 @@ function generateLanguageSection(language, textColor) {
     const languageLength = (language || '').length * 6; // Approximation
     const positionX = Math.min(33, 450 - languageLength - 10); // 10 as margin
     const color = languageColors[language] || '#000';
-    
+
     return `
 <g transform="translate(${positionX}, ${thirdRowY + 11})">
     <circle cx="-10" cy="0" r="7" fill="${color}"></circle>
@@ -93,7 +93,7 @@ function generateLanguageSection(language, textColor) {
 
 function generateStarSection(stargazersCount, repoUrl, textColor, iconColor) {
     // Position relative to the canvas
-    const positionX = width * 0.75; 
+    const positionX = width * 0.75;
 
     return `
 <g transform="translate(${positionX}, ${thirdRowY + 16})"> <!-- Adjusted the x-coordinate -->
@@ -106,7 +106,7 @@ function generateStarSection(stargazersCount, repoUrl, textColor, iconColor) {
 
 function generateForksSection(forksCount, repoUrl, textColor, iconColor) {
     // Position relative to the canvas
-    const positionX = width * 0.9; 
+    const positionX = width * 0.9;
 
     return `
 <g transform="translate(${positionX}, ${thirdRowY})"> <!-- Adjusted the x-coordinate -->

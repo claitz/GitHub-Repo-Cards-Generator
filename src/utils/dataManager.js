@@ -13,13 +13,14 @@ export async function hasCachedData(user, repo) {
     if (!cachedData) return false;
 
     return Date.now() - cachedData.timestamp < CACHE_TIME;
-
-
 }
 
 export async function getCachedData(user, repo) {
     return new Promise((resolve, reject) => {
-        db.get(`SELECT * FROM cache WHERE LOWER(user) = LOWER(?) AND LOWER(repo_name) = LOWER(?)`, [user, repo], (err, row) => {
+        db.get(`SELECT *
+                FROM cache
+                WHERE LOWER(user) = LOWER(?)
+                  AND LOWER(repo_name) = LOWER(?)`, [user, repo], (err, row) => {
             if (err) {
                 return reject(err);
             }
@@ -30,9 +31,9 @@ export async function getCachedData(user, repo) {
                     description: row.description,
                     name: row.repo_name,
                     html_url: row.html_url,
-                    language: row.language 
+                    language: row.language
                 };
-                resolve({ ...data, timestamp: row.timestamp });
+                resolve({...data, timestamp: row.timestamp});
             } else {
                 resolve(null);
             }
@@ -42,11 +43,16 @@ export async function getCachedData(user, repo) {
 
 export async function updateCache(user, repo, data) {
     return new Promise((resolve, reject) => {
-        db.run(`DELETE FROM cache WHERE user = ? AND repo_name = ?`, [user, repo], (err) => {
+        db.run(`DELETE
+                FROM cache
+                WHERE user = ?
+                  AND repo_name = ?`, [user, repo], (err) => {
             if (err) {
                 return reject(err);
             }
-            db.run(`INSERT INTO cache (user, repo_name, stars, forks, description, html_url, language, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, [user, repo, data.stargazers_count, data.forks_count, data.description, data.html_url, data.language, Date.now()], (err) => {
+            db.run(`INSERT INTO cache (user, repo_name, stars, forks, description, html_url, language, timestamp)
+                    VALUES (?, ?, ?, ?, ?, ?, ?,
+                            ?)`, [user, repo, data.stargazers_count, data.forks_count, data.description, data.html_url, data.language, Date.now()], (err) => {
                 if (err) {
                     return reject(err);
                 }
