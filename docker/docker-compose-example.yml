@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  github-card-generator:
+    build: ../
+    ports:
+      - "3000:3000"
+    environment:
+      - GITHUB_TOKEN=
+      - API_WINDOW=60
+      - API_LIMIT=5
+      - PORT=3000
+      - SERVER_URL=http://localhost:3000
+      - PUBLIC_URL=http://localhost:3000

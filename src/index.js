@@ -7,6 +7,8 @@ import { hasCachedData, getCachedData, updateCache, getRepoData } from './utils/
 
 const PORT = process.env.PORT || 3000;
 
+const HOSTNAME = process.env.HOSTNAME || 'localhost';
+
 const API_WINDOW = process.env.API_WINDOW || 1; // Window in minutes
 const API_LIMIT = process.env.API_LIMIT || 1; // Max API calls per hour
 
@@ -21,6 +23,16 @@ const apiLimiter = rateLimit({
     message: "Too many requests created from this IP, please try again after " + API_WINDOW + " minutes"
 });
 
+const checkCache = async (req, res, next) => {
+    const { user, repo } = req.params;
+    const hasCache = await hasCachedData(user, repo);
+    if (!hasCache) {
+        apiLimiter(req, res, next);
+    } else {
+        next();
+    }
+};
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
@@ -33,15 +45,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'static/index.html'));
 });
 
-const checkCache = async (req, res, next) => {
-    const { user, repo } = req.params;
-    const hasCache = await hasCachedData(user, repo);
-    if (!hasCache) {
-        apiLimiter(req, res, next);
-    } else {
-        next();
-    }
-};
+app.get('/js/config.js', (req, res) => {
+    res.set('Content-Type', 'application/javascript');
+    res.send(`
+        window.config = {
+            SERVER_URL: "${process.env.SERVER_URL || 'http://localhost:3000'}",
+            PUBLIC_URL: "${process.env.PUBLIC_URL || 'http://localhost:3000'}"
+        };
+    `);
+});
 
 app.get('/repo/:user/:repo', checkCache, async (req, res) => {
     const { user, repo } = req.params;
