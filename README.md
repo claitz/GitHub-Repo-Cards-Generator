@@ -49,10 +49,10 @@ docker pull claitz/github-repo-card-generator
 ```
 2. Run the Docker container, replacing `your_github_token` with your GitHub token:
 ```bash
-docker run -p 3000:3000 -e GITHUB_TOKEN=your_github_token -e SERVER_URL=your_server_url -e PUBLIC_URL=your_public_url claitz/github-repo-card-generator
+docker run -p 3000:3000 -e GITHUB_TOKEN=your_github_token -e PUBLIC_URL=your_public_url claitz/github-repo-card-generator
 ```
 
-3. Replace `your_server_url` with the internal server URL (e.g., `http://localhost:3000`) and `your_public_url` with the public-facing URL (e.g., `https://example.com`).
+3. Replace `your_public_url` with the public-facing URL (e.g., `https://example.com`).
 
 ## Usage
 Navigate to `http://localhost:3000` in your web browser (or your public URL if configured).

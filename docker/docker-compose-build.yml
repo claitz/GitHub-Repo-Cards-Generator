@@ -10,6 +10,6 @@ services:
       - GITHUB_TOKEN=
       - API_WINDOW=60
       - API_LIMIT=5
+      - CACHE_LENGTH=60
       - PORT=3000
-      - SERVER_URL=http://localhost:3000
       - PUBLIC_URL=http://localhost:3000

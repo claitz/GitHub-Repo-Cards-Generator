@@ -1,4 +1,3 @@
-const serverUrl = window.config.SERVER_URL;
 const publicUrl = window.config.PUBLIC_URL;
 document.getElementById('repoForm').addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -17,10 +16,11 @@ document.getElementById('repoForm').addEventListener('submit', async (event) => 
     localStorage.setItem('textColor', textColor);
     localStorage.setItem('iconColor', iconColor);
 
-    const response = await fetch(`${serverUrl}/repo/${gituser}/${repository}?bg_color=${bgColor}&title_color=${titleColor}&text_color=${textColor}&icon_color=${iconColor}`);
-    document.getElementById('result').innerHTML = await response.text();
-
     const imageUrl = `${publicUrl}/repo/${gituser}/${repository}?bg_color=${bgColor}&title_color=${titleColor}&text_color=${textColor}&icon_color=${iconColor}`;
+
+    const response = await fetch(imageUrl);
+
+    document.getElementById('result').innerHTML = await response.text();
 
     // Generate shortcodes
     const bbShortcode = `[img]${imageUrl}[/img]`;

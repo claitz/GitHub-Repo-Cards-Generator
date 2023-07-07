@@ -7,7 +7,7 @@ import { hasCachedData, getCachedData, updateCache, getRepoData } from './utils/
 
 const PORT = process.env.PORT || 3000;
 
-const HOSTNAME = process.env.HOSTNAME || 'localhost';
+const PUBLIC_URL = process.env.PUBLIC_URL || 'http://localhost:3000';
 
 const API_WINDOW = process.env.API_WINDOW || 1; // Window in minutes
 const API_LIMIT = process.env.API_LIMIT || 1; // Max API calls per hour
@@ -49,8 +49,7 @@ app.get('/js/config.js', (req, res) => {
     res.set('Content-Type', 'application/javascript');
     res.send(`
         window.config = {
-            SERVER_URL: "${process.env.SERVER_URL || 'http://localhost:3000'}",
-            PUBLIC_URL: "${process.env.PUBLIC_URL || 'http://localhost:3000'}"
+            PUBLIC_URL: "${PUBLIC_URL}"
         };
     `);
 });

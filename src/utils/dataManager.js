@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const CACHE_MINUTES = 3; // Cache time in minutes
+const CACHE_MINUTES = process.env.CACHE_LENGHT || 60; // Cache time in minutes
 const CACHE_TIME = CACHE_MINUTES * 60 * 1000; // Cache time in milliseconds
 
 export async function hasCachedData(user, repo) {
