@@ -76,5 +76,10 @@ export async function getRepoData(user, repo) {
         throw new Error('Failed to fetch repository data');
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    return {
+        ...data,
+        user: user
+    };
 }
