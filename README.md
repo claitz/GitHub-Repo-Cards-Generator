@@ -9,21 +9,23 @@ The generated SVG card will be displayed along with BBCode, HTML, and Markdown q
 
 ## Features
 
-- Generates SVG cards for GitHub repositories
-- Caches repository data
-- Limits API requests rate
-- Provides a user interface for generating and customizing SVG cards
-- Provides quick copy codes (BBCode, HTML, Markdown) for embedding SVG cards
+- Generates SVG cards for GitHub repositories with customizable colors and options
+- Lightweight responsive UI with quick copy codes (BBCode, HTML, Markdown) for embedding the output SVG card
+- Configurable cache supported by SQLite
+- Optionally limits the number of requests per hour to the GitHub API
 
 ## Screenshots
 
-![GitHub Repo Card Generator Interface](https://imgur.com/bmNbwdB.png)
+![GitHub Repo Card Generator Interface](https://i.imgur.com/PikixRc.png)
 
 ## Examples
 
-![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=ffffff&title_color=0366d6&text_color=333333&icon_color=3g3333)
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=ffffff&title_color=0366d6&text_color=333333&icon_color=3g3333&show_user=false)
 
-![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=333333&title_color=37ff00&text_color=00eeff&icon_color=ff00bb)
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=333333&title_color=37ff00&text_color=00eeff&icon_color=ff00bb&show_user=false)
+
+![GitHub Repo Card](https://ghc.clait.sh/repo/claitz/GitHub-Repo-Cards-Generator?bg_color=334333&title_color=ffff00&text_color=00ccff&icon_color=ff0000&show_user=true)
+
 
 ## Demo
 
