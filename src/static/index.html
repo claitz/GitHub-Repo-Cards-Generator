@@ -11,40 +11,44 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-
 <body>
 <div class="page-wrapper">
     <h1>GitHub Repo Card Generator</h1>
     <div class="container">
         <div class="input-area">
             <form id="repoForm" class="form">
-                <input type="text" id="giturl" placeholder="Enter GitHub Repository URL">
-
-                <!-- TODO: style-->
-                <input type="checkbox" id="show_user" checked> Show username
-
-                <label for="bg_color">BG</label>
-                <div class="color-container">
-                    <input type="color" id="bg_color" value="#ffffff">
-                    <span class="reset-icon" data-default="#ffffff" style="display: none;">❌</span>
+                <div class="input-row">
+                    <input type="text" id="giturl" placeholder="Enter GitHub Repository URL">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="show_user" checked>
+                        <label for="show_user" class="small-label">Show User</label>
+                    </div>
                 </div>
 
-                <label for="title_color">Title</label>
-                <div class="color-container">
-                    <input type="color" id="title_color" value="#0366d6">
-                    <span class="reset-icon" data-default="#0366d6" style="display: none;">❌</span>
+                <div class="color-row">
+                    <div class="color-container">
+                        <input type="color" id="bg_color" value="#ffffff">
+                        <span class="reset-icon" data-default="#ffffff" style="display: none;">❌</span>
+                        <label for="bg_color" class="small-label">BG</label>
+                    </div>
+                    <div class="color-container">
+                        <input type="color" id="title_color" value="#0366d6">
+                        <span class="reset-icon" data-default="#0366d6" style="display: none;">❌</span>
+                        <label for="title_color" class="small-label">Title</label>
+                    </div>
                 </div>
 
-                <label for="text_color">Text</label>
-                <div class="color-container">
-                    <input type="color" id="text_color" value="#333333">
-                    <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
-                </div>
-
-                <label for="icon_color">Icons</label>
-                <div class="color-container">
-                    <input type="color" id="icon_color" value="#333333">
-                    <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
+                <div class="color-row">
+                    <div class="color-container">
+                        <input type="color" id="text_color" value="#333333">
+                        <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
+                        <label for="text_color" class="small-label">Text</label>
+                    </div>
+                    <div class="color-container">
+                        <input type="color" id="icon_color" value="#333333">
+                        <span class="reset-icon" data-default="#333333" style="display: none;">❌</span>
+                        <label for="icon_color" class="small-label">Icons</label>
+                    </div>
                 </div>
 
                 <button type="submit" class="submit-button">Generate</button>

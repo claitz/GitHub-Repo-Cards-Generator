@@ -14,6 +14,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
@@ -24,8 +25,13 @@ h1 {
     width: 100%;
 }
 
-.input-area, .output-area {
-    flex: 1;
+.input-area {
+    flex: 50%;
+    padding: 10px;
+}
+
+.output-area {
+    flex: 50%;
     padding: 10px;
 }
 
@@ -36,17 +42,45 @@ h1 {
     align-items: center;
 }
 
-.submit-button {
+.input-row, .color-row {
     grid-column: span 4;
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 #giturl {
-    grid-column: span 4;
-    padding: 10px;
+    flex: 3;
+    height: 45px;
+    text-align: center;
 }
 
-#bg_color, #title_color, #text_color, #icon_color {
+.checkbox-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.small-label {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+    color: #666;
+}
+
+#bg_color,
+#title_color,
+#text_color,
+#icon_color {
     width: 100%;
     height: 30px;
     border: none;
@@ -54,7 +88,21 @@ h1 {
     margin: 5px 0;
 }
 
-.submit-button, .copy-button {
+.reset-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.submit-button {
+    grid-column: span 4;
+    padding: 10px;
+}
+
+.submit-button,
+.copy-button {
     padding: 10px;
     background-color: #0366d6;
     color: #fff;
@@ -62,9 +110,11 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
     margin: 5px;
+    width: 100%;
 }
 
-.submit-button:hover, .copy-button:hover {
+.submit-button:hover,
+.copy-button:hover {
     background-color: #024ea4;
 }
 
@@ -82,28 +132,6 @@ h1 {
     text-align: center;
 }
 
-.color-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    min-width: 50px;
-
-}
-
-.reset-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 12px;
-}
-
-label {
-    text-align: center;
-    padding-right: 10px;
-    grid-column: span 1;
-}
-
 footer {
     display: flex;
     justify-content: center;
@@ -114,7 +142,8 @@ footer {
     font-size: 14px;
 }
 
-.footer-content p, .footer-content a {
+.footer-content p,
+.footer-content a {
     text-align: center;
 }
 
@@ -136,12 +165,74 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
     .container {
+        padding: 0;
         flex-direction: column;
     }
-
-    .input-area, .output-area {
+    h1 {
+        font-size: 1.5em;
+        margin-top: 10px;
+    }
+    .input-area,
+    .output-area {
+        padding: 10px;
+    }
+    .form{
+        gap: 0;
+    }
+    .input-row,
+    .color-row {
+        margin-bottom: 10px;
+    }
+    .input-row {
+        flex-direction: column;
+    }
+    #giturl {
         flex: none;
         width: 100%;
+        height: 45px;
+        text-align: center;
+        align-content: center;
+    }
+    .checkbox-container {
+        padding-top: 20px;
+        order: 2;  /* this ensures the checkbox always comes after the input, even if you change the HTML structure */
+    }
+    .checkbox-container input[type=checkbox] {
+        margin-right: 10px;
+    }
+    .color-container {
+        padding: 10px 0;
+    }
+    .small-label {
+        font-size: 14px;
+    }
+    #bg_color,
+    #title_color,
+    #text_color,
+    #icon_color {
+        height: 40px;
+    }
+    .submit-button {
+        padding: 15px;
+    }
+    .submit-button,
+    .copy-button {
+        font-size: 16px;
+    }
+    .result {
+        margin-bottom: 10px;
+    }
+    .shortcodes {
+        padding: 15px;
+    }
+    footer {
+        font-size: 16px;
+    }
+    .footer-content img {
+        height: 25px;
     }
 }
