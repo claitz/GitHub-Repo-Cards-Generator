@@ -71,6 +71,8 @@ h1 {
 .result {
     margin-bottom: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .shortcodes {
