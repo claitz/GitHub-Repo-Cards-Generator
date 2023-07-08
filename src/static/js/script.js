@@ -20,6 +20,7 @@ document.getElementById('repoForm').addEventListener('submit', async (event) => 
         console.log('Invalid GitHub URL');
         return;
     }
+    const show_user = document.getElementById('show_user').checked;
 
     const bgColor = document.getElementById('bg_color').value.substring(1);
     const titleColor = document.getElementById('title_color').value.substring(1);
@@ -32,7 +33,7 @@ document.getElementById('repoForm').addEventListener('submit', async (event) => 
     localStorage.setItem('textColor', textColor);
     localStorage.setItem('iconColor', iconColor);
 
-    const imageUrl = `${publicUrl}/repo/${gituser}/${repository}?bg_color=${bgColor}&title_color=${titleColor}&text_color=${textColor}&icon_color=${iconColor}`;
+    const imageUrl = `${publicUrl}/repo/${gituser}/${repository}?bg_color=${bgColor}&title_color=${titleColor}&text_color=${textColor}&icon_color=${iconColor}&show_user=${show_user}`;
 
     const response = await fetch(imageUrl);
 

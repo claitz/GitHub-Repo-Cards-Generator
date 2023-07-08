@@ -32,7 +32,8 @@ export async function getCachedData(user, repo) {
                     description: row.description,
                     name: row.repo_name,
                     html_url: row.html_url,
-                    language: row.language
+                    language: row.language,
+                    user: row.user
                 };
                 resolve({...data, timestamp: row.timestamp});
             } else {
@@ -75,5 +76,10 @@ export async function getRepoData(user, repo) {
         throw new Error('Failed to fetch repository data');
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    return {
+        ...data,
+        user: user
+    };
 }

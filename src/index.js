@@ -63,6 +63,7 @@ app.get('/repo/:user/:repo', checkCache, async (req, res) => {
     const titleColor = req.query.title_color || '#0366d6';
     const textColor =  req.query.text_color || '#333';
     const iconColor =  req.query.icon_color || '#333';
+    const show_user = req.query.show_user === 'true';
 
     let data;
     try {
@@ -79,7 +80,7 @@ app.get('/repo/:user/:repo', checkCache, async (req, res) => {
         return res.send(svg);
     }
 
-    const svg = generateSVG(data, backgroundColor, titleColor, textColor, iconColor);
+    const svg = generateSVG(data, backgroundColor, titleColor, textColor, iconColor, show_user);
 
     res.setHeader('Content-Type', 'image/svg+xml');
     res.send(svg);

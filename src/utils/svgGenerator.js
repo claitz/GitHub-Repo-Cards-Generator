@@ -24,16 +24,14 @@ export function generateErrorSVG(errorMessage) {
         </svg>`;
 }
 
-export function generateSVG(data, backgroundColor, titleColor, textColor, iconColor) {
-
+export function generateSVG(data, backgroundColor, titleColor, textColor, iconColor, show_user) {
     const finalBackgroundColor = backgroundColor.charAt(0) !== '#' ? '#' + backgroundColor : backgroundColor;
     const finalTitleColor = titleColor.charAt(0) !== '#' ? '#' + titleColor : titleColor;
     const finalTextColor = textColor.charAt(0) !== '#' ? '#' + textColor : textColor;
     const finalIconColor = iconColor.charAt(0) !== '#' ? '#' + iconColor : iconColor;
-
     const descriptionLines = splitText(data.description || '', maxRowLength);
     const repoIcon = generateRepoIcon(finalIconColor);
-    const header = generateHeader(data.name, data.html_url, finalTitleColor);
+    const header = generateHeader(data.user, data.name, data.html_url, finalTitleColor, show_user);
     const starSection = generateStarSection(data.stargazers_count, data.html_url, finalTextColor, finalIconColor);
     const descriptionSection = generateDescriptionSection(descriptionLines, finalTextColor);
     const languageSection = generateLanguageSection(data.language, finalTextColor);
@@ -63,14 +61,14 @@ function generateRepoIcon(iconColor) {
 </g>`;
 }
 
-function generateHeader(repoName, repoUrl, titleColor) {
+function generateHeader(userName, repoName, repoUrl, titleColor, show_user) {
     // Position relative to the canvas
     const positionX = width * 0.12;
-
+    const finalRepoName = show_user ? userName + '/' + repoName : repoName;
     return `
 <g fill="#0366d6" transform="translate(${positionX}, ${firstRowY})">
     <a target="_blank" href="${repoUrl}">
-        <text font-family="sans-serif" font-size="16" font-weight="600" fill="${titleColor}">${repoName}</text>
+        <text font-family="sans-serif" font-size="16" font-weight="600" fill="${titleColor}">${finalRepoName}</text>
     </a>
 </g>`;
 }
