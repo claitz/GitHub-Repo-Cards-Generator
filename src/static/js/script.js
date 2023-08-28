@@ -1,5 +1,5 @@
 const publicUrl = window.config.PUBLIC_URL;
-const googleAnalyticsID = window.config.googleAnalyticsID;
+
 document.getElementById('repoForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -103,28 +103,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-// Google Analytics
-if (typeof googleAnalyticsID !== 'undefined' && googleAnalyticsID.trim() !== '') {
-    document.addEventListener('DOMContentLoaded', function() {
-        // Creating the gtag script element
-        let gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsID}`;
-
-        // Appending the gtag script to the document head
-        document.head.appendChild(gtagScript);
-
-        // Creating the configuration script element
-        let gtagConfigScript = document.createElement('script');
-        gtagConfigScript.innerHTML = `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${googleAnalyticsID}');
-        `;
-
-        // Appending the configuration script to the document head
-        document.head.appendChild(gtagConfigScript);
-    });
-}
